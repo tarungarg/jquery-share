@@ -25,6 +25,7 @@
                     margin = this.share.settings.margin,
                     pageTitle = this.share.settings.title||$(document).attr('title'),
                     pageUrl = this.share.settings.urlToShare||$(location).attr('href'),
+                    media = this.share.settings.media
                     pageDesc = "";
                 
                 $.each($(document).find('meta[name="description"]'),function(idx,item){
@@ -38,14 +39,15 @@
                         u=encodeURIComponent(pageUrl),
                         t=encodeURIComponent(pageTitle),
                         d=pageDesc.substring(0,250),
+                        m=encodeURIComponent(media),
                         href;
 
                     // append HTML for each network button
                     for (var item in networks) {
                         item = networks[item];
                         href = helpers.networkDefs[item].url;
-                        href = href.replace('|u|',u).replace('|t|',t).replace('|d|',d)
-                                   .replace('|140|',t.substring(0,130));
+                        href = href.replace('|u|',u).replace('|t|',t).replace('|d|',d).replace('|m|',m)
+                        .replace('|140|',t.substring(0,130));
                         $("<a href='"+href+"' title='Share this page on "+item+
                             "' class='pop share-"+theme+" share-"+theme+"-"+item+"'></a>")
                             .appendTo($element);
@@ -106,7 +108,7 @@
                 digg:{url:'http://digg.com/submit?url=|u|&title=|t|'},
                 googleplus:{url:'https://plusone.google.com/_/+1/confirm?hl=en&url=|u|'},
                 reddit:{url:'http://reddit.com/submit?url=|u|'},
-                pinterest:{url:'http://pinterest.com/pin/create/button/?url=|u|&media=&description=|d|'},
+                pinterest:{url:'http://pinterest.com/pin/create/button/?url=|u|&media=|m|&description=|d|'},
                 posterous:{url:'http://posterous.com/share?linkto=|u|&title=|t|'},
                 stumbleupon:{url:'http://www.stumbleupon.com/submit?url=|u|&title=|t|'},
                 email:{url:'mailto:?subject=|t|'}

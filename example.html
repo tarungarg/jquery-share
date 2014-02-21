@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery share plugin demo</title>
+		<link rel="stylesheet" href="jquery.share.css">
+</head>
+<body>
+	<h1>jQuery share plugin demo</h1>
+	<p>Share is very popular plugin for sharing the link at facebook, twitter, tumblr etc. <br/>
+		Now you can also share on pintrest, It will no more give you the error of image url. Here is the example give below</p>
+	<div id="social-post"></div>
+
+<br/><b>Steps to share</b><br/>
+	<ul>
+		<li> Include the jquery share css and js into the file.</li>
+		<li> Take a div with attribute "id" in the body.</li>
+		<li> Call share method on that id.</li>
+		<li> Set networks on which you want to share your link.</li>
+		<li> Now set "urlToShare" attribute. </li>
+		<li> One extra attribute added is media. This attribute is for pint it the image on pintrest. <br/>
+		<b>$("#social-post").share({ </b><br/>
+					<b>networks: ['facebook', 'twitter', 'pinterest', 'tumblr'], </b><br/>
+					<b>urlToShare: "https://github.com/iatek/jquery-share", </b><br/>
+					<b>media: "http://placehold.it/350x150&text=FooBar1" // image path for pintrest to pin</b><br/>
+				<b>}); <b/><br/>
+		</li>
+	</ul>
+
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script> 
+	<script src="jquery.share.js"></script> 
+
+		<script>
+			$("#social-post").share({
+					networks: ['facebook', 'twitter', 'pinterest', 'tumblr'],
+					urlToShare: "https://github.com/iatek/jquery-share",
+					media: "http://placehold.it/350x150&text=FooBar1"
+				});
+		</script> 
+
+	</body>
+</html>
